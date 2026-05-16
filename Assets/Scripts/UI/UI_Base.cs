@@ -8,12 +8,8 @@ using UnityEngine.UI;
 public abstract class UI_Base : MonoBehaviour
 {
 	protected Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
-	public abstract void Init();
 
-	private void Awake()
-	{
-		Init();
-	}
+	protected abstract void Awake();
 
 	protected void Bind<T>(Type type) where T : UnityEngine.Object
 	{

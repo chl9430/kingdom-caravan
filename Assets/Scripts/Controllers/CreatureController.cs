@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CreatureController : BaseController
 {
-	protected override void Init()
+	protected override void Start()
 	{
-		base.Init();
+		base.Start();
 	}
 
 	public virtual void OnDamaged()

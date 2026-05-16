@@ -15,12 +15,7 @@ public class BaseController : MonoBehaviour
 			return;
 	}
 
-	void Start()
-	{
-		Init();
-	}
-
-    protected virtual void Init()
+    protected virtual void Start()
     {
         _animator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();

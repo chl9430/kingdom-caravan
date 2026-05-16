@@ -7,13 +7,8 @@ public abstract class BaseScene : MonoBehaviour
 {
     public Define.Scene SceneType { get; protected set; } = Define.Scene.Unknown;
 
-	void Awake()
+    protected virtual void Awake()
 	{
-		Init();
-	}
-
-	protected virtual void Init()
-    {
         Object obj = Object.FindFirstObjectByType(typeof(EventSystem));
         if (obj == null)
             Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
