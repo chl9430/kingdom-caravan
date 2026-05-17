@@ -9,10 +9,12 @@ public class EnemyChase : MonoBehaviour
 
     private Transform player;
     private Rigidbody2D rb;
+    private EnemyHealth enemyHealth;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     private void Start()
@@ -29,23 +31,26 @@ public class EnemyChase : MonoBehaviour
     {
         if (player == null) return;
 
+        // 넉백 중이면 이동 중단
+        if (enemyHealth != null && enemyHealth.IsKnockedBack)
+        {
+            return;
+        }
+
         float distance = Vector2.Distance(transform.position, player.position);
 
-        // 감지 범위 밖이면 멈춤
         if (distance > detectionRange)
         {
             rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        // 너무 가까우면 멈춤
         if (distance <= stopDistance)
         {
             rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        // 추적
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
     }
