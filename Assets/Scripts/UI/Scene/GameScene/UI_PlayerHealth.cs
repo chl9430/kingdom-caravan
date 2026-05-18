@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class UI_PlayerHealth : MonoBehaviour
 {
-    public MyPlayerController playerHealth;
     public TextMeshProUGUI hpText;
+
+    private MyPlayerController playerHealth;
 
     private void Awake()
     {
@@ -30,6 +31,9 @@ public class UI_PlayerHealth : MonoBehaviour
 
     private void UpdateHealthUI(int currentHealth, int maxHealth)
     {
+        if (currentHealth < 0)
+            currentHealth = 0;
+
         hpText.text = "HP: " + currentHealth + " / " + maxHealth;
     }
 }
