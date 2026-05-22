@@ -11,12 +11,14 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyLayer;
 
     private MyPlayerController playerMovement;
+    private PlayerAnimatorController playerAnim;
 
     private float lastAttackTime;
 
     private void Awake()
     {
         playerMovement = GetComponent<MyPlayerController>();
+        playerAnim = GetComponent<PlayerAnimatorController>();
     }
 
     private void Update()
@@ -34,6 +36,11 @@ public class PlayerAttack : MonoBehaviour
 
         lastAttackTime = Time.time;
 
+        playerAnim.PlayAttack();
+    }
+
+    public void PerformAttackHit()
+    {
         Attack();
     }
 
@@ -42,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
         if (attackPoint == null || playerMovement == null) return;
 
         Vector2 dir = playerMovement.LastMoveDir;
-        attackPoint.localPosition = dir * 0.6f;
+        attackPoint.localPosition = dir * attackRange;
     }
 
     private void Attack()

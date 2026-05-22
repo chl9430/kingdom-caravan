@@ -11,7 +11,7 @@ public class MyPlayerController : CreatureController
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
-
+    public Vector2 MoveInput { get { return moveInput; } }
     public Vector2 LastMoveDir { get; private set; } = Vector2.down;
 
     [Header("Health Settings")]
