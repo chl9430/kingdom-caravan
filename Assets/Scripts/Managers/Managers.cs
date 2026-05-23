@@ -9,12 +9,14 @@ public class Managers : MonoBehaviour
 
     #region Contents
     ObjectManager _obj = new ObjectManager();
+    WaveManager _wave = new WaveManager();
 
     public static ObjectManager Object { get { return Instance._obj; } }
-	#endregion
+    public static WaveManager Web { get { return Instance._wave; } }
+    #endregion
 
-	#region Core
-	DataManager _data = new DataManager();
+    #region Core
+    DataManager _data = new DataManager();
     PoolManager _pool = new PoolManager();
     ResourceManager _resource = new ResourceManager();
     SceneManagerEx _scene = new SceneManagerEx();

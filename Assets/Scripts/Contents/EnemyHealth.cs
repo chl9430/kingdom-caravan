@@ -13,6 +13,9 @@ public class EnemyHealth : MonoBehaviour
     public Color hitFlashColor = Color.red;
     public float flashDuration = 0.08f;
 
+    [Header("EXP")]
+    public GameObject expOrbPrefab;
+
     private int currentHealth;
 
     private Rigidbody2D rb;
@@ -48,6 +51,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Instantiate(expOrbPrefab, transform.position, Quaternion.identity);
             StartCoroutine(DieCoroutine());
         }
     }
